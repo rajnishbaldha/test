@@ -20,7 +20,7 @@ jobs:
         run: npm install
 
       - name: Build app for macOS
-        run: npx electron-builder --mac --x64  # Builds for Intel; add --arm64 for Apple Silicon if needed
+        run: npx electron-builder --mac --x64 --publish never # Builds for Intel; add --arm64 for Apple Silicon if needed
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
