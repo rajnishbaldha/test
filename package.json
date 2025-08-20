@@ -1,0 +1,26 @@
+{
+  "name": "folder-tree-app",
+  "version": "1.0.0",
+  "description": "A simple app to generate a folder tree viewer",
+  "author": "Your Name <your.email@example.com>",
+  "main": "main.js",
+  "scripts": {
+    "start": "ELECTRON_DISABLE_SANDBOX=1 electron .",
+    "dist": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "37.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.example.foldertreeapp",
+    "productName": "FolderTreeApp",
+    "files": [
+      "main.js"
+    ],
+    "mac": {
+      "category": "public.app-category.utilities",
+      "target": "dmg"
+    }
+  }
+}
