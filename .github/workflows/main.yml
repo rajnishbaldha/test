@@ -1,0 +1,30 @@
+name: Build for macOS
+
+on:
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'  # Use a recent Node version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build app for macOS
+        run: npx electron-builder --mac --x64  # Builds for Intel; add --arm64 for Apple Silicon if needed
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mac-app
+          path: dist/*.dmg  # The DMG contains the double-clickable .app file
+          retention-days: 5  # Keeps artifact for 5 days
